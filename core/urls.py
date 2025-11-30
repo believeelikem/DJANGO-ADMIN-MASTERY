@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from blog.admin import blog_site
+# from blog.admin import blog_site
 
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path('admin/', blog_site.urls)
+    path('admin/', admin.site.urls),
+    # path('blogadmin/', blog_site.urls),
 ]
 
 # admin.site.index_title = "Book store"
