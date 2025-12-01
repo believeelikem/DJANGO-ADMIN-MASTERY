@@ -17,7 +17,7 @@ class BlogAdminArea(admin.AdminSite):
     
 # blog_site = BlogAdminArea(name="BlogAdmin")
 blog_site2 = BlogAdminArea(name="BlogAdmin")
-blog_site2.register(Post)
+# blog_site2.register(Post)
 
 
 # admin.site.register(Post)
@@ -76,10 +76,17 @@ blog_site2.register(Post)
     
     
 # admin.site.register(Post, PostFormAdmin)
-
+from django_summernote.admin import SummernoteModelAdmin
 
 class BlogAdminArea(admin.AdminSite):
-    site_header = "Blog Admin Area"
+    site_header = "Blog Admin Area" 
 
 blog_site = BlogAdminArea(name="BlogAdmin")
-blog_site.register(Post)
+# blog_site.register(Post)
+# admin.site.unregister(Post)
+
+class SummerAdmin(SummernoteModelAdmin):
+    summernote_fields = "__all__"
+    
+# admin.site.register(Post, SummerAdmin)
+blog_site.register(Post, SummerAdmin)

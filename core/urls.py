@@ -27,10 +27,13 @@ import blog.admin
 importlib.reload(blog.admin)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blogadmin/', blog_site2.urls),
+    path('blogadmin/', blog_site.urls),
     path("summernote/", include("django_summernote.urls"))
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) 
+        # += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
 # admin.site.index_title = "Book store"
 # admin.site.site_header = "Book store admin"
