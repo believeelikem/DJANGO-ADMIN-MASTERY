@@ -8,11 +8,16 @@ from .models import *
 
 
 
-# class BlogAdminArea(admin.AdminSite):
-#     site_header = "blog Admin area"
+class BlogAdminArea(admin.AdminSite):
+    site_header = "Blog Admin area"
+    # index_title = "Something here"
+    site_title = "B"
+    login_template = "blog/admin/login.html"
+   
     
 # blog_site = BlogAdminArea(name="BlogAdmin")
-# blog_site.register(Post)
+blog_site2 = BlogAdminArea(name="BlogAdmin")
+blog_site2.register(Post)
 
 
 # admin.site.register(Post)
@@ -22,8 +27,8 @@ from .models import *
 # class PostAdmin(admin.ModelAdmin):
 #     fields = ["title", "author"] # the fields for adding new data
 
-models = django.apps.apps.get_models()    
-print(models)
+# models = django.apps.apps.get_models()    
+# print(models)
 
 # admin.site.register(Post)
 # for model in models:
@@ -53,21 +58,28 @@ print(models)
 # admin.site.register(Post, PostAdmin)
 
 
-from django import forms
+# from django import forms
 
-class PostForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(PostForm, self).__init__(*args, **kwargs)
+# class PostForm(forms.ModelForm):
+#     def __init__(self, *args, **kwargs):
+#         super(PostForm, self).__init__(*args, **kwargs)
         
-        self.fields["title"].help_text = "New Help text"
+#         self.fields["title"].help_text = "New Help text"
         
-    class Meta:
-        model = Post
-        exclude = ("slug",)
+#     class Meta:
+#         model = Post
+#         exclude = ("slug",)
         
 
-class PostFormAdmin(admin.ModelAdmin):
-    form = PostForm
+# class PostFormAdmin(admin.ModelAdmin):
+#     form = PostForm
     
     
-admin.site.register(Post, PostFormAdmin)
+# admin.site.register(Post, PostFormAdmin)
+
+
+class BlogAdminArea(admin.AdminSite):
+    site_header = "Blog Admin Area"
+
+blog_site = BlogAdminArea(name="BlogAdmin")
+blog_site.register(Post)
